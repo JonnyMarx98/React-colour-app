@@ -23,8 +23,8 @@ function generatePalette(basePalette) {
         name: `${color.name} ${levels[i]}`,
         id: color.name.toLowerCase().replace(/ /g, ""),
         hex: scale[i],
-        rgb: chroma(scale[i]).css(),
-        rgba: chroma(scale[i])
+        rgb: chroma(scale[i]).css(), // convert to rgb
+        rgba: chroma(scale[i])       // convert to rgba
           .css()
           .replace("rgb", "rgba")
           .replace(")", ",1.0)")
