@@ -8,7 +8,7 @@ const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 function generatePalette(basePalette) {
   let newPalette = {
-    paletteName: basePalette.name,
+    paletteName: basePalette.paletteName,
     id: basePalette.id,
     emoji: basePalette.emoji,
     colors: {}
