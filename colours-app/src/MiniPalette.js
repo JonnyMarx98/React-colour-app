@@ -14,7 +14,7 @@ const styles = {
     }
   },
   colors: {
-    backgroundColor: "grey"
+
   },
   title: {
     dsiplay: "flex",
