@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import ColorBox from './ColorBox';
 import 'rc-slider/assets/index.css';
-import './Palette.css'
 import Navbar from './Navbar';
 import PaletteFooter from './PaletteFooter';
 import { withStyles } from '@material-ui/core/styles';
@@ -18,7 +17,6 @@ class Palette extends Component {
       this.changeLevel = this.changeLevel.bind(this);
       this.changeFormat = this.changeFormat.bind(this);
     }
-
     changeLevel(level){
       this.setState({level});
     }
