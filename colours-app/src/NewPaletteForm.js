@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -12,6 +12,7 @@ import Button from '@material-ui/core/Button'
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import {ChromePicker} from 'react-color';
+import DragColorBox from './DragColorBox';
 
 const drawerWidth = 400;
 
@@ -55,6 +56,7 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     flexGrow: 1,
+    height: "calc(100vh - 64px)",
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -74,7 +76,9 @@ const useStyles = makeStyles(theme => ({
 export default function NewPaletteForm(){
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(true);
+  const [currentColor, setCurrentColor] = useState("red");
+  const [colors, setColors] = useState(["purple", "blue", "red"]);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -83,6 +87,15 @@ export default function NewPaletteForm(){
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const updateCurrentColor = (newColor) => {
+    console.log(newColor);
+    setCurrentColor(newColor.hex)
+  }
+
+  const addNewColor = () => {
+    setColors([...colors, currentColor]);
+  }
 
   return (
     <div className={classes.root}>
@@ -134,8 +147,13 @@ export default function NewPaletteForm(){
             Random Color
           </Button>
         </div>
-        <ChromePicker color='purple' onChangeComplete={(newColor)=> console.log(newColor)}/>
-        <Button variant="contained" color="primary">
+        <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor}/>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          style={{backgroundColor: currentColor}}
+          onClick={addNewColor}
+        >
           Add Colour
         </Button>
       </Drawer>
@@ -145,6 +163,9 @@ export default function NewPaletteForm(){
         })}
       >
         <div className={classes.drawerHeader} />
+        {colors.map(color => (
+          <DragColorBox color={color} />
+        ))}
       </main>
     </div>
   );
