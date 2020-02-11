@@ -8,10 +8,10 @@ import IconButton from '@material-ui/core/IconButton';
 import Button from '@material-ui/core/Button'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-import {ChromePicker} from 'react-color';
 import DragColorList from './DragColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import PaletteFormNav from './PaletteFormNav';
+import ColorPickerForm from './ColorPickerForm';
 
 const drawerWidth = 400;
 
@@ -82,8 +82,6 @@ export default function NewPaletteForm(props){
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState("red");
   const [colors, setColors] = useState(props.palettes[0].colors);
-  // const [newColorName, setNewColorName] = useState("");
-  // const [newPaletteName, setNewPaletteName] = useState("");
   const [newNames, setNewNames] = useState({palette: '', color: ''})
 
   useEffect(() => {
@@ -203,26 +201,14 @@ export default function NewPaletteForm(props){
             Random Color
           </Button>
         </div>
-        <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor}/>
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator 
-          value={newNames.color}
-          name='color'
-          onChange={handleChange}
-          validators={["required", "isColorNameUnique", "isColorUnique"]}
-          errorMessages={["Enter a color name!", "Name must be unique!", "Color must be unique"]} 
-          />
-          <Button
-          type="submit" 
-          variant="contained" 
-          color="primary" 
-          style={{backgroundColor: paletteIsFull ? "grey" : currentColor}}
-          disabled={paletteIsFull}
-          >
-          {paletteIsFull ? "Palette is full" : "Add Colour"}
-          </Button>
-        </ValidatorForm>
-        
+        <ColorPickerForm 
+          newNames={newNames}
+          handleChange={handleChange}
+          paletteIsFull={paletteIsFull}
+          currentColor={currentColor}
+          addNewColor={addNewColor}
+          updateCurrentColor={updateCurrentColor}
+        />
       </Drawer>
       <main
         className={clsx(classes.content, {
