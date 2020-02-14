@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     }),
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     height: "64px"
   },
   appBarShift: {
@@ -42,7 +43,13 @@ const useStyles = makeStyles(theme => ({
     display: 'none',
   },
   navBtns: {
-
+    marginRight: "1rem",
+    "& a" : {
+      textDecoration: "none"
+    }
+  },
+  button: {
+    margin: "0 0.5rem",
   }
 }));
 
@@ -50,6 +57,12 @@ export default function PaletteFormNav(props) {
   const { open, handleDrawerOpen, handleSubmit, newNames, handleChange } = props;
   const classes = useStyles();
   const theme = useTheme();
+  const [formShowing, setFormShowing] = useState(false);
+
+  const handleClick = () => {
+    setFormShowing(true);
+  }
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -75,17 +88,21 @@ export default function PaletteFormNav(props) {
           </Typography>
         </Toolbar>
         <div className={classes.navBtns}>
-            
-            <PaletteMetaForm
-              handleChange={handleChange}
-              newNames={newNames}
-              handleSubmit={handleSubmit}
-            />
             <Link to="/">
-              <Button variant="contained" color="secondary">Go Back</Button>
+              <Button variant="contained" color="secondary" className={classes.button}>Go Back</Button>
             </Link>
+            <Button variant="contained" color="primary" onClick={handleClick} className={classes.button}>
+              Save Palette
+            </Button>
           </div>
       </AppBar>
+
+      {formShowing && <PaletteMetaForm
+        handleChange={handleChange}
+        newNames={newNames}
+        handleSubmit={handleSubmit}
+        handleClose={setFormShowing}
+      />}
     </div>
   )
 }
