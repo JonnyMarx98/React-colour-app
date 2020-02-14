@@ -140,13 +140,16 @@ export default function NewPaletteForm(props){
     setNewNames({...newNames, [name]: value});
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (newPalette) => {
     let newName = newNames.palette;
-    const newPalette = {
-      paletteName: newName,
-      id: newName.toLowerCase().replace(/ /g, "-"),
-      colors: colors
-    }
+    newPalette.id = newName.toLowerCase().replace(/ /g, "-");
+    newPalette.colors = colors;
+
+    // const newPalette = {
+    //   paletteName: newName + emoji,
+    //   id: newName.toLowerCase().replace(/ /g, "-"),
+    //   colors: colors
+    // }
     props.savePalette(newPalette);
     props.history.push("/");
   }
