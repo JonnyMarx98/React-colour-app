@@ -59,8 +59,11 @@ export default function PaletteFormNav(props) {
   const theme = useTheme();
   const [formShowing, setFormShowing] = useState(false);
 
-  const handleClick = () => {
+  const showForm = () => {
     setFormShowing(true);
+  }
+  const hideForm = () => {
+    setFormShowing(false);
   }
   
   return (
@@ -91,7 +94,7 @@ export default function PaletteFormNav(props) {
             <Link to="/">
               <Button variant="contained" color="secondary" className={classes.button}>Go Back</Button>
             </Link>
-            <Button variant="contained" color="primary" onClick={handleClick} className={classes.button}>
+            <Button variant="contained" color="primary" onClick={showForm} className={classes.button}>
               Save Palette
             </Button>
           </div>
@@ -101,7 +104,7 @@ export default function PaletteFormNav(props) {
         handleChange={handleChange}
         newNames={newNames}
         handleSubmit={handleSubmit}
-        handleClose={setFormShowing}
+        hideForm={hideForm}
       />}
     </div>
   )

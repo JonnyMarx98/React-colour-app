@@ -7,10 +7,12 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import {Picker} from 'emoji-mart';
+import "emoji-mart/css/emoji-mart.css"
 
 export default function PaletteMetaForm(props) {
   const [open, setOpen] = React.useState(true);
-  const { handleSubmit, newNames, handleChange, handleClose } = props;
+  const { handleSubmit, newNames, handleChange, hideForm } = props;
 
   useEffect(() => {
     ValidatorForm.addValidationRule('isPaletteNameUnique', (value) => 
@@ -26,35 +28,36 @@ export default function PaletteMetaForm(props) {
 
   const handleCancel = () => {
     setOpen(false);
-    handleClose(false);
+    hideForm();
   };
 
   return (
-    <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+    <Dialog open={open} onClose={handleCancel} aria-labelledby="form-dialog-title">
       <DialogTitle id="form-dialog-title">Choose a Palette Name</DialogTitle>
       <ValidatorForm onSubmit={handleSubmit}>
       <DialogContent>
         <DialogContentText>
           Please enter a unique name for your beautiful new palette
         </DialogContentText>
-            <TextValidator 
-            label="Palette Name"
-            value={newNames.palette}
-            onChange={handleChange}
-            name='palette'
-            fullWidth
-            margin="normal"
-            validators={["required", "isPaletteNameUnique"]}
-            errorMessages={["Enter Palette Name!", "Name already taken"]} 
-            />
+        <Picker />
+          <TextValidator 
+          label="Palette Name"
+          value={newNames.palette}
+          onChange={handleChange}
+          name='palette'
+          fullWidth
+          margin="normal"
+          validators={["required", "isPaletteNameUnique"]}
+          errorMessages={["Enter Palette Name!", "Name already taken"]} 
+          />
       </DialogContent>
       <DialogActions>
         <Button onClick={handleCancel} color="primary">
           Cancel
         </Button>
         <Button variant="contained" color="primary" type="submit">
-            Save Palette
-          </Button>
+          Save Palette
+        </Button>
       </DialogActions>
       </ValidatorForm>
     </Dialog>
