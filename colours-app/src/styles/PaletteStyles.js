@@ -1,4 +1,4 @@
-
+import sizes from './sizes';
 
 export default {
   Palette: {
@@ -38,6 +38,20 @@ export default {
       border: "none",
       cursor: "pointer",
       textDecoration: "none",
+    },
+
+    [sizes.down("lg")] : {
+      width: "75%",
+      height: "33.33333%"
+    },
+    [sizes.down("md")] : {
+      width: "50%",
+      height: "20%"
+    },
+    [sizes.down("xs")] : {
+      width: "100%",
+      height: "10%"
     }
+
   }
 }
