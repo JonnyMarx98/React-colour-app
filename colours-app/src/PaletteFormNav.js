@@ -56,7 +56,7 @@ export default function PaletteFormNav(props) {
               <Button variant="contained" color="secondary" className={classes.button}>Go Back</Button>
             </Link>
             <Button variant="contained" color="primary" onClick={showForm} className={classes.button}>
-              Save Palette
+              Save
             </Button>
           </div>
       </AppBar>
