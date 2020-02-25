@@ -15,6 +15,7 @@ export default {
   },
   heading: {
     fontSize: "2rem"
+    // 
   },
   container: {
     width: "50%",
