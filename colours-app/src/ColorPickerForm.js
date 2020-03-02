@@ -1,5 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import React from 'react';
 import Button from '@material-ui/core/Button'
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import {ChromePicker} from 'react-color';

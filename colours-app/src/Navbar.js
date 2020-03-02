@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
 import {Link} from 'react-router-dom';
+import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Snackbar from '@material-ui/core/Snackbar';
@@ -37,7 +37,7 @@ class Navbar extends Component {
 
   render() {
     const {level, changeLevel, singleColor, classes} = this.props;
-    const {format} = this.state;
+    const {format, snackOpen} = this.state;
     return (
       <header className={classes.Navbar}>
         <div className={classes.logo}>
@@ -64,7 +64,7 @@ class Navbar extends Component {
         </div>
         <Snackbar
           anchorOrigin={{vertical: "bottom", horizontal: "left"}}
-          open={this.state.snackOpen}
+          open={snackOpen}
           autoHideDuration={3000}
           message={<span id="message-id">Format Changed to {format.toUpperCase()}</span>}
           ContentProps={{

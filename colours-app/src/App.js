@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import {generatePalette} from './colorHelpers';
+import {TransitionGroup, CSSTransition} from 'react-transition-group';
+import NewPaletteForm from './NewPaletteForm';
 import Palette from './Palette';
 import SinglePalette from './SinglePalette';
 import PaletteList from './PaletteList';
-import seedColors from './seedColors';
-import NewPaletteForm from './NewPaletteForm';
-import {TransitionGroup, CSSTransition} from 'react-transition-group';
 import Page from './Page';
-// import './App.css';
+import seedColors from './seedColors';
+import {generatePalette} from './colorHelpers';
+
+
 
 class App extends Component{
   constructor(props) {
@@ -98,11 +99,6 @@ class App extends Component{
         </CSSTransition>
       </TransitionGroup>
     )}/>
-    
-    
-    // <div className="App">
-    //   <Palette palette={generatePalette(seedColors[4])}/>
-    // </div>
     );
   }
   
