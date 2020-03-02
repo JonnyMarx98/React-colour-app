@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -10,9 +10,8 @@ import {Picker} from 'emoji-mart';
 import "emoji-mart/css/emoji-mart.css"
 
 export default function PaletteMetaForm(props) {
-  const [open, setOpen] = React.useState(true);
+  const [setOpen] = React.useState(true);
   const [stage, setStage] = React.useState("form")
-  const [submit, setSubmit] = React.useState(false);
   const { handleSubmit, newNames, handleChange, hideForm } = props;
 
   useEffect(() => {
