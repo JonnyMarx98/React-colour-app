@@ -22,7 +22,7 @@ class App extends Component{
     this.findPalette = this.findPalette.bind(this);
     this.deletePalette = this.deletePalette.bind(this);
   }
-
+//
   
   findPalette(id){
     return this.state.palettes.find(function(palette){
