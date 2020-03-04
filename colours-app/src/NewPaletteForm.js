@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -23,7 +22,6 @@ NewPaletteForm.defaultProps = {
 
 export default function NewPaletteForm(props){
   const classes = useStyles();
-  const theme = useTheme();
   const [open, setOpen] = useState(true);
   const [currentColor, setCurrentColor] = useState("red");
   const [colors, setColors] = useState(seedColors[0].colors);
@@ -80,7 +78,6 @@ export default function NewPaletteForm(props){
       randomColor = randPalette.colors[Math.floor(Math.random()*randPalette.colors.length)];
       // check if duplicate
       isDuplicate = colors.some(color => color.name === randomColor.name);
-      console.log(randomColor.name);
     }
     
     setColors([...colors, randomColor]);

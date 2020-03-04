@@ -10,7 +10,6 @@ import {Picker} from 'emoji-mart';
 import "emoji-mart/css/emoji-mart.css"
 
 export default function PaletteMetaForm(props) {
-  const [setOpen] = React.useState(true);
   const [stage, setStage] = React.useState("form")
   const { handleSubmit, newNames, handleChange, hideForm } = props;
 
@@ -22,9 +21,9 @@ export default function PaletteMetaForm(props) {
     );
   })
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+  // const handleClickOpen = () => {
+  //   setOpen(true);
+  // };
 
   const handleCancel = () => {
     hideForm();

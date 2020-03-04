@@ -15,7 +15,6 @@ import useStyles from './styles/PaletteFormNavStyles';
 export default function PaletteFormNav(props) {
   const { open, handleDrawerOpen, handleSubmit, newNames, handleChange } = props;
   const classes = useStyles();
-  const theme = useTheme();
   const [formShowing, setFormShowing] = useState(false);
 
   const showForm = () => {
