@@ -70,12 +70,19 @@ export default function NewPaletteForm(props){
   }
 
   const addRandomColor = () => {
-    // Choose random palette
-    var randP = Math.floor(Math.random()*props.palettes.length);
-    const randPalette = props.palettes[randP];
-    // Choose random color from that palette
-    var randC = Math.floor(Math.random()*randPalette.colors.length);
-    const randomColor = randPalette.colors[randC];
+    let randPalette;
+    let randomColor;
+    let isDuplicate = true;
+    while(isDuplicate){
+      // Choose random palette
+      randPalette = props.palettes[Math.floor(Math.random()*props.palettes.length)];
+      // Choose random color from that palette
+      randomColor = randPalette.colors[Math.floor(Math.random()*randPalette.colors.length)];
+      // check if duplicate
+      isDuplicate = colors.some(color => color.name === randomColor.name);
+      console.log(randomColor.name);
+    }
+    
     setColors([...colors, randomColor]);
     setNewNames({...newNames, color: ""});
   }
