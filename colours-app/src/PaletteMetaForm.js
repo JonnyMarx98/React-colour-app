@@ -21,10 +21,6 @@ export default function PaletteMetaForm(props) {
     );
   })
 
-  // const handleClickOpen = () => {
-  //   setOpen(true);
-  // };
-
   const handleCancel = () => {
     hideForm();
   };
