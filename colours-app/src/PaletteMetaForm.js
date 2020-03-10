@@ -19,7 +19,7 @@ export default function PaletteMetaForm(props) {
         ({paletteName}) => paletteName.toLowerCase() !== value.toLowerCase()
       )
     );
-  })
+  }) //
 
   const handleCancel = () => {
     hideForm();
